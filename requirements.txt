@@ -1,3 +1,5 @@
 gradio
 google-generativeai
 pillow
+pandas
+yfinance
