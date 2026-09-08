@@ -1,5 +1,6 @@
-gradio
-google-generativeai
-pillow
-pandas
-yfinance
+Flask==3.0.2
+google-generativeai==0.7.2
+gunicorn==22.0.0
+opencv-python-headless==4.10.0.84
+Pillow==10.3.0
+numpy==1.26.4
