@@ -10,9 +10,8 @@ def analyze_chart(image, pair_tf):
         return "❌ Tafadhali weka picha ya chart kwanza"
     
     try:
-        model = genai.GenerativeModel("gemini-2.0-flash")
+        model = genai.GenerativeModel("gemini-3.6-flash")
         
-        # Tumetumia string ya kawaida ili isivunje
         prompt = (
             f"Chambua chart hii ya {pair_tf} kwa SMC/ICT. "
             "Jibu kwa Kiswahili na utaratibu huu:\n"
