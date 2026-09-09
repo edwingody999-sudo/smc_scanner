@@ -10,17 +10,8 @@ def analyze_chart(image, pair_tf):
         return "Tafadhali weka picha ya chart kwanza"
     
     try:
-        model = genai.GenerativeModel('gemini-pro-vision')
-        prompt = f"""
-        Wewe ni mchambuzi wa SMC/ICT. Chambua chart hii ya {pair_tf}.
-        Jibu kwa Kiswahili kwa format hii:
-        **BIAS**: 
-        **ENTRY**: 
-        **SL**: 
-        **TP1**: 
-        **TP2**: 
-        **SABABU**: 
-        """
+        model = genai.GenerativeModel('gemini-1.5-flash')
+        prompt = f"Chambua chart hii ya {pair_tf} kwa kutumia SMC na ICT. Jibu kwa Kiswahili. Toa BIAS, ENTRY, SL, TP1, TP2, SABABU."
         response = model.generate_content([prompt, image])
         return response.text
     except Exception as e:
@@ -28,8 +19,8 @@ def analyze_chart(image, pair_tf):
 
 iface = gr.Interface(
     fn=analyze_chart,
-    inputs=[gr.Image(type="pil", label="Weka Screenshot ya Chart"), gr.Textbox(label="Pair + Timeframe mf: EURUSD 1H")],
-    outputs=gr.Textbox(label="Uchambuzi wa AI"),
+    inputs=[gr.Image(type="pil"), gr.Textbox()],
+    outputs="text",
     title="SMC AI Scanner"
 )
 iface.launch(server_name="0.0.0.0", server_port=7860)
